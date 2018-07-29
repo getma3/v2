@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#87ceeb">
+    <title>Data mine portal</title>
+    <style>body{
+      background-color: skyblue;
+      }</style>
+  </head>
+  <body>
+    <p id="title">Data mine portal</p>
+    <div id="coords">
+      <p id="count">stage count:</p>
+      <h1 id="counter"><%=data%></h1>
+      <br/>
+      <p id="count">Current Location:</p>
+      <p id='pos'></p>
+      <a target="_blank" id="verify" href=""><button id="refresh">Verify</button></a>
+      <button id="refresh" onclick="loadCoords()">Load</button>
+    </div>
+    <form method="post" action="/team/datamine"/>
+      <input type="text" name ="name" placeholder="stage name"/>
+      <input type="text" name ="desc" placeholder="description"/>
+      <input type="text" name ="routes" placeholder="routes (separate with comma ',') "/>
+      <input type="text" name ="nearby" placeholder="places nearby (separate with comma ',') "/>
+      <input type="text" class="coords" id="lat" name ="latitude" placeholder="latitude"/>
+      <input type="text" class="coords" id="lon" name ="longitude" placeholder="longitude"/>
+      <label><input type="checkbox" name="van" value="true"/>van</label>
+      <label><input type="checkbox" name="bus" value="true"/>bus</label>
+      <label><input type="checkbox" name="single" value="true"/>single</label>
+      <label><input type="checkbox" name="single" value="false"/>both</label>
+      <input type ="submit" />
+    </form>
+    <p id="credits">GETMA3 2018</p>
+
+    <script>
+    var posLat;var posLon;
+        var pos = document.getElementById("pos");
+        var lat = document.getElementById("lat");
+        var target = document.getElementById("verify");
+        var lon = document.getElementById("lon");
+
+        function loadCoords(){
+          lat.value = posLat;
+          lon.value = posLon;
+        }
+
+        setInterval(function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+              x.innerHTML = "Geolocation is not supported by this browser.";
+          }},1000);
+
+        function showPosition(position) {
+          pos.innerHTML = `${position.coords.latitude.toFixed(8)},${position.coords.longitude.toFixed(8)}`
+          posLat =position.coords.latitude.toFixed(8);
+          posLon =position.coords.longitude.toFixed(8);
+          verify.href=`http://www.google.com/maps/place/${position.coords.latitude.toFixed(8)},${position.coords.longitude.toFixed(8)}`
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/assets/style.css" type="text/css" rel="stylesheet"/>
+    	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  </head>
+  <body>
+    <h2> API GET TEST </h2>
+    <p>ctrl + shift + i  to open up console</p>
+    <form id ="byName" action="http://localhost:8080/api/v1/stages/name/">
+      <br>
+      <br>
+      <br>
+      <br>
+      <p>By Name</p>
+      <input id="name" type="text"/>
+      <input type="submit"></input>
+    </form>
+
+    <form id ="byCoords" action="http://localhost:8080/api/v1/stages/coords">
+      <br>
+      <br>
+      <br>
+      <br>
+      <p>By coords</p>
+      <input placeholder="latitude..." id="lat" type="text"/>
+      <input placeholder="longitude..." id="lon" type="text"/>
+      <input type="submit"></input>
+    </form>
+
+    <form id ="byNear" action="http://localhost:8080/api/v1/stages/nearby/">
+      <br>
+      <br>
+      <br>
+      <br>
+      <p>By NearBy place</p>
+      <input placeholder="nearby..." id="near" type="text"/>
+      <input type="submit"></input>
+    </form>
+
+    <script>
+    //LOADING FILES//
+      $(document).ready(function(){
+
+        $('#byName').submit(function(e){
+          e.preventDefault();
+          var text = $('#name').val();
+          var url = $(this).attr('action');
+          $.get(url+text).done(function(data){
+              console.log(data);
+            });
+          });
+          $('#byNear').submit(function(e){
+            e.preventDefault();
+            var near = $('#near').val();
+            var url = $(this).attr('action');
+            $.get(url+near).done(function(data){
+                console.log(data);
+              });
+            });
+        $('#byCoords').submit(function(e){
+          e.preventDefault();
+          var lat = $('#lat').val();
+          var lon = $('#lon').val();
+          var url = $(this).attr('action');
+          $.get(url,{lat:lat,lon:lon}).done(function(data){
+              console.log(data);
+            });
+          });
+    });
+  </script>
+  </body>
+</html>

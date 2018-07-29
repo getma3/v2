@@ -1,0 +1,109 @@
+*{margin:0;padding: 0;font-family: sans-serif;}
+a{
+  text-decoration: none;
+}
+
+body{
+  height: 110%;
+  margin:1em 0;
+  text-align: center;
+}
+
+form{
+  display: inline-block;
+  background-color: #fff;
+  text-align: center;
+  width: 40%;
+  min-width: 350px;
+  margin: 2em auto;
+  padding: 20px;
+}
+
+input{
+  width:80%;
+  margin: 7px auto;
+  height: 2.5em;
+  display: inline-block;
+}
+
+label{
+  margin: 10px 0%;
+  display: inline-block;
+  width: 20%;
+  font-size: 1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#count{
+  text-transform: uppercase;
+  font-size: 0.7em;
+  margin:5px;
+}
+
+#counter{
+  font-size: 2em;
+  color:rgba(0,0,0,0.3);
+}
+
+#refresh{
+  display: inline-block;
+  border: none;
+  padding: 10px;
+  margin:3px;
+  width: 25%;
+  min-width: 70px;
+}
+
+
+#loadCoords{
+  width:80%;
+  margin: 7px auto;
+  height: 2.5em;
+  display: inline-block;
+}
+
+
+
+#coords{
+  width: 40%;
+  min-width: 350px;
+  margin: 0em auto;
+  padding: 20px;
+  background: #fff;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#coords:hover{
+  transform: all  linear 2s;
+ height: 150px;
+}
+
+#title{
+  width:100%;
+  font-weight: 700;
+  margin: 1em auto;
+  color:#fff;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+}
+
+#retry{
+  width: 20%;
+  margin: 4em;
+  height: 2em;
+  font-size: 2em;
+}
+#fail{
+  font-size:1em;
+  margin:2em;
+  color:#fff;
+}
+
+#credits{
+  color:#fff;
+  font-size: 0.6em;
+}
