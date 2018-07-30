@@ -5,7 +5,6 @@ a{
 
 body{
   height: 110%;
-  margin:1em 0;
   text-align: center;
 }
 
@@ -91,6 +90,7 @@ label{
   font-size: 2em;
 }
 
+
 #retry{
   width: 20%;
   margin: 4em;
@@ -104,6 +104,141 @@ label{
 }
 
 #credits{
-  color:#fff;
+  color:#333;
   font-size: 0.6em;
+}
+
+#login-with-google{
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+  padding: 10px;
+  font-size: 1em;
+  display: block;
+  width: 50%;
+  max-width: 250px;
+  margin:2em auto;
+  color: #333;
+}
+#team-header{
+  font-size: 1.5em;
+  float: left;
+}
+.nav-bar{
+  background-color: #fff;
+  height: 2em;
+  padding:10px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+}
+
+.thumb{
+  width: 150px;
+  height: 1em;
+  padding: 10px;
+  text-align: center;
+  float: right;
+}
+
+.fa-ellipsis-h{
+  position: relative;
+  font-size: 1.5em;
+  float: right;
+  bottom:20px;
+  animation: pulse linear 2s infinite;
+}
+
+.main-container{
+  margin:1em 0em; 
+  text-align: center;
+  height: 500px;
+  width: 100%;
+}
+
+  .main-container h3{
+    font-weight: 100;
+    padding:10px;
+    width: 95%;
+  }
+
+.team-list{
+  margin:5px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 500px;
+  min-width: 250px;
+  width: 20%;
+  background-color: #fff;
+}
+
+
+.all-stages{
+  margin:5px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 500px;
+  width: 50%;
+  background-color: #fff;
+}
+
+.latest-uploads{
+  margin:5px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 500px;
+  min-width: 250px;
+  width: 20%;
+  background-color: #fff;
+}
+
+
+@media screen and (max-width:1000px){
+  .team-list{
+    display: inline-block;
+    height: 500px;
+    min-width: 200px;
+    width: 95%;
+    background-color: #fff;
+    margin:5px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  }
+  .all-stages{
+    display: inline-block;
+    height: 500px;
+    min-width: 200px;
+    width: 95%;
+    background-color: #fff;
+    margin:5px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  }
+  
+  .latest-uploads{
+    display: inline-block;
+    height: 500px;
+    min-width: 200px;
+    width: 95%;
+    background-color: #fff;
+    margin:5px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes pulse{
+  0%{transform:scale(1.1)}
+  50%{transform: scale(0.8)}
+  100%{transform: scale(1.1)}
 }

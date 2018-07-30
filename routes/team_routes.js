@@ -4,14 +4,17 @@ const bodyparser = require("body-parser");
 const urlencodedparser = bodyparser.urlencoded({extended:false});
 
 router.get('/',(req,res)=>{
-    res.send('hello team')
+    res.render('team_home')
 })
 
 router.get('/datamine',(req,res)=>{
     Stage.find().count().then((val)=>{
         res.render("datamine",{data:val})
-    })
-    
+    }) 
+})
+
+router.get('/dashboard',(req,res)=>{
+	res.render('team_dashboard');
 })
 
 router.post('/datamine',urlencodedparser,(req,res)=>{

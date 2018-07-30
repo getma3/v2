@@ -3,11 +3,8 @@ const ejs = require("ejs");
 const express = require("express");
 const bodyparser = require("body-parser");
 const urlencodedparser = bodyparser.urlencoded({extended:false});
-//
 const keys = require("./config/keys");
-
 const port = process.env.port || 3000;
-
 const app = express();
 
 // Routes
@@ -15,7 +12,6 @@ const API_routes = require("./routes/api_routes");
 const TEAM_routes = require("./routes/team_routes");
 
 mongoose.connect(`mongodb://${keys.db.dbuser}:${keys.db.dbpass}@ds259111.mlab.com:59111/getma3`);
-
 mongoose.connection.once("open",()=>{
     console.log("connection to db successful");
 }).on("error",(err)=>{
