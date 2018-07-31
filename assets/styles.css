@@ -1,8 +1,12 @@
 *{margin:0;padding: 0;font-family: sans-serif;}
 a{
   text-decoration: none;
+  color:inherit;
 }
 
+ul{
+  list-style: none;
+}
 body{
   height: 110%;
   text-align: center;
@@ -108,14 +112,24 @@ label{
   font-size: 0.6em;
 }
 
+.unhide{
+  transition: display ease-out .5s ;
+  display: none;
+}
+
+.hide-if-team{
+  display: none;
+}
+
 #login-with-google{
+  
+  transition: all ease-out .5s ;
   box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
   padding: 10px;
   font-size: 1em;
-  display: block;
   width: 50%;
   max-width: 250px;
-  margin:2em auto;
+  margin:3em auto;
   color: #333;
 }
 #team-header{
@@ -146,7 +160,7 @@ label{
 }
 
 .main-container{
-  margin:1em 0em; 
+  margin:1em 0 10em 0; 
   text-align: center;
   height: 500px;
   width: 100%;
@@ -156,6 +170,7 @@ label{
     font-weight: 100;
     padding:10px;
     width: 95%;
+    color:#333;
   }
 
 .team-list{
@@ -178,6 +193,16 @@ label{
   background-color: #fff;
 }
 
+.all-stages ul{
+  padding: 10px;
+  margin:auto;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  width: 80%;
+}
+.all-stages li{
+  text-align: left;
+}
+
 .latest-uploads{
   margin:5px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
@@ -188,6 +213,20 @@ label{
   background-color: #fff;
 }
 
+.active{
+  display: none;
+}
+
+#menu{
+  color:#fff;
+  border: solid;
+  width: 150px;
+  height: 100px;
+  padding: 10px;
+  background: #333;
+  position:absolute;
+  left:50%;
+}
 
 @media screen and (max-width:1000px){
   .team-list{

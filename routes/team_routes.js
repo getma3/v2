@@ -3,21 +3,29 @@ const Stage = require('../models/stages')
 const bodyparser = require("body-parser");
 const urlencodedparser = bodyparser.urlencoded({extended:false});
 
+const authCheck = (req,res,next)=>{
+	if(!(req.user)){
+		res.redirect('/team')
+	}else{
+		next();
+	}
+}
+
 router.get('/',(req,res)=>{
     res.render('team_home')
 })
 
-router.get('/datamine',(req,res)=>{
+router.get('/datamine',authCheck,(req,res)=>{
     Stage.find().count().then((val)=>{
         res.render("datamine",{data:val})
     }) 
 })
 
-router.get('/dashboard',(req,res)=>{
-	res.render('team_dashboard');
+router.get('/dashboard',authCheck,(req,res)=>{
+		res.render('team_dashboard',{data:req.user});
 })
 
-router.post('/datamine',urlencodedparser,(req,res)=>{
+router.post('/datamine',authCheck,urlencodedparser,(req,res)=>{
     var data = req.body
 	if(!data.name || !data.desc || !data.routes || !data.latitude){
 		res.render('fail');
@@ -60,3 +68,5 @@ router.post('/datamine',urlencodedparser,(req,res)=>{
 })
 
 module.exports = router
+
+
