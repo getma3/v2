@@ -12,7 +12,7 @@ body{
   text-align: center;
 }
 
-form{
+#datamine-form{
   display: inline-block;
   background-color: #fff;
   text-align: center;
@@ -161,7 +161,6 @@ label{
 
 .main-container{
   margin:1em 0 10em 0; 
-  text-align: center;
   height: 500px;
   width: 100%;
 }
@@ -169,11 +168,13 @@ label{
   .main-container h3{
     font-weight: 100;
     padding:10px;
-    width: 95%;
+    width: 100%;
     color:#333;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   }
 
 .team-list{
+  overflow: hidden;
   margin:5px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   display: inline-block;
@@ -185,6 +186,7 @@ label{
 
 
 .all-stages{
+  overflow: hidden;
   margin:5px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   display: inline-block;
@@ -196,7 +198,6 @@ label{
 .all-stages ul{
   padding: 10px;
   margin:auto;
-  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   width: 80%;
 }
 .all-stages li{
@@ -204,11 +205,11 @@ label{
 }
 
 .latest-uploads{
+  overflow: hidden;
   margin:5px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   display: inline-block;
   height: 500px;
-  min-width: 250px;
   width: 20%;
   background-color: #fff;
 }
@@ -217,15 +218,69 @@ label{
   display: none;
 }
 
-#menu{
-  color:#fff;
-  border: solid;
-  width: 150px;
-  height: 100px;
-  padding: 10px;
-  background: #333;
-  position:absolute;
-  left:50%;
+.menu{
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5);
+  width: 20%;
+  height: 150px;
+  top:50px;
+  margin-left: 80%;
+  position: absolute;
+  transition: all .2s ease-out;
+}
+
+  .menu li{
+    color:#fff;
+    margin: 1em 0;
+  }
+
+.post-form{
+  background: rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.post-form button{
+  margin: 5px;
+  display: inline-block;
+  width: 91%;
+  height: 40px;;
+}
+
+.post-form input{
+  display: inline-block;
+  height:50px; 
+  width: 90%;
+}
+
+.forum-posts{
+ text-align: center;
+  padding: 5px;
+  width: 95%;
+  overflow: hidden;
+  height: 64.7%;
+  overflow-y: scroll;
+}
+
+.forum-posts li{
+  font-size: 0.8em;
+  text-align: left;
+  margin: 7% 1%;
+  height: 7em;
+  overflow: hidden;
+  padding: 15px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+}
+.forum-posts p{
+  padding: 5px;
+  color:rgba(0,0,0,0.6);
+  width: 40%;
+  margin-left: 50%;
+  font-size: 0.7em;
+  text-align: right;
+  clear: both;
 }
 
 @media screen and (max-width:1000px){
@@ -258,23 +313,6 @@ label{
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @keyframes pulse{
   0%{transform:scale(1.1)}

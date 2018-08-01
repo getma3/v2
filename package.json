@@ -28,7 +28,8 @@
     "mongoose": "*",
     "nodemon": "^1.17.5",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "socket.io": "^2.1.1"
   },
   "engines": {
     "node": "8.9.4",

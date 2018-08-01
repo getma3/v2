@@ -20,7 +20,7 @@
       <a target="_blank" id="verify" href=""><button id="refresh">Verify</button></a>
       <button id="refresh" onclick="loadCoords()">Load</button>
     </div>
-    <form method="post" action="/team/datamine"/>
+    <form id="datamine-form" method="post" action="/team/datamine"/>
       <input type="text" name ="name" placeholder="stage name"/>
       <input type="text" name ="desc" placeholder="description"/>
       <input type="text" name ="routes" placeholder="routes (separate with comma ',') "/>
