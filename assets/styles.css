@@ -174,7 +174,7 @@ label{
   }
 
 .team-list{
-  overflow: hidden;
+  overflow-y: scroll;
   margin:5px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   display: inline-block;
@@ -183,10 +183,21 @@ label{
   width: 20%;
   background-color: #fff;
 }
+.team-list img{
+  position: relative;
+  top:1em;
+}
 
+#data-result{
+  height: 5em;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  margin: 3px;
+}
 
 .all-stages{
-  overflow: hidden;
+  padding: 20px;
+  text-align: left;
+  overflow-y: scroll;
   margin:5px;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   display: inline-block;
@@ -286,6 +297,7 @@ label{
 @media screen and (max-width:1000px){
   .team-list{
     display: inline-block;
+    overflow-y: scroll;
     height: 500px;
     min-width: 200px;
     width: 95%;
@@ -293,10 +305,17 @@ label{
     margin:5px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   }
+
+  .team-list img{
+    position: relative;
+    top:1em;
+  }
   .all-stages{
+    text-align: left;
     display: inline-block;
     height: 500px;
     min-width: 200px;
+    overflow-y: scroll;
     width: 95%;
     background-color: #fff;
     margin:5px;
@@ -309,6 +328,7 @@ label{
     min-width: 200px;
     width: 95%;
     background-color: #fff;
+    overflow-y: scroll;
     margin:5px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
   }

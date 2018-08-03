@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Stage = require('../models/stages')
+const TeamMember = require('../models/team_member');
 const bodyparser = require("body-parser");
 const urlencodedparser = bodyparser.urlencoded({extended:false});
 
@@ -23,6 +24,12 @@ router.get('/datamine',authCheck,(req,res)=>{
 
 router.get('/dashboard',authCheck,(req,res)=>{
 		res.render('team_dashboard',{data:req.user});
+})
+
+router.get('/teammembers',authCheck,(req,res)=>{
+	TeamMember.find({}).then(data=>{
+		res.json(data);
+	})
 })
 
 router.post('/datamine',authCheck,urlencodedparser,(req,res)=>{
