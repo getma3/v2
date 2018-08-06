@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     $.ajax({
         method:'GET',
-        url:'http://getma3.herokuapp.com/api/v1/stages/all',
+        url:'https://getma3.herokuapp.com/api/v1/stages/all',
         dataType:'json'
     }).done(function(result){
        $.map(result.response.data,function(stage){
@@ -20,7 +20,7 @@ $(document).ready(function(){
 
        $.ajax({
         method:'GET',
-        url:'http://getma3.herokuapp.com/team/teammembers',
+        url:'https://getma3.herokuapp.com/team/teammembers',
         dataType:'json'
     }).done(function(result){
        $.map(result,function(member){

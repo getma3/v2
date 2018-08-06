@@ -1,5 +1,5 @@
 //var socket = io.connect('http://localhost:3000')
-var socket = io.connect('http://getma3.herokuapp.com')
+var socket = io.connect('https://getma3.herokuapp.com')
 
 var forum_btn =  document.getElementById('forum-post-btn');
 var frm_post =   document.getElementById('forum-input');
