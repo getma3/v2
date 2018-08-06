@@ -4,6 +4,10 @@ a{
   color:inherit;
 }
 
+p{
+  user-select: none;
+}
+
 ul{
   list-style: none;
 }
@@ -74,15 +78,12 @@ label{
   margin: 0em auto;
   padding: 20px;
   background: #fff;
-  height: 50px;
+  height: 150px;
   overflow: hidden;
   text-align: center;
 }
 
-#coords:hover{
-  transform: all  linear 2s;
- height: 150px;
-}
+
 
 #title{
   width:100%;
@@ -195,7 +196,7 @@ label{
 }
 
 .all-stages{
-  padding: 20px;
+  padding: 0px;
   text-align: left;
   overflow-y: scroll;
   margin:5px;
@@ -209,7 +210,7 @@ label{
 .all-stages ul{
   padding: 10px;
   margin:auto;
-  width: 80%;
+  width: 78%;
 }
 .all-stages li{
   text-align: left;
@@ -235,9 +236,22 @@ label{
   width: 20%;
   height: 150px;
   top:50px;
-  margin-left: 80%;
+  margin-left: 79%;
   position: absolute;
   transition: all .2s ease-out;
+}
+
+@media screen and (max-width:600px){
+  .menu{
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+    width: 50%;
+    height: 150px;
+    top:50px;
+    margin-left: 50%;
+    position: absolute;
+    transition: all .2s ease-out;
+  }
 }
 
   .menu li{
@@ -270,7 +284,6 @@ label{
  text-align: center;
   padding: 5px;
   width: 95%;
-  overflow: hidden;
   height: 64.7%;
   overflow-y: scroll;
 }

@@ -10,6 +10,7 @@ const passport = require("passport");
 const passportSetup = require('./config/passport-setup');
 const cookieSession =require("cookie-session");
 const socket = require("socket.io");
+const secure = require("express-force-https");
 const Forum_Post = require("./models/forum-posts");
 // Routes
 const API_routes = require("./routes/api_routes");
@@ -22,6 +23,9 @@ mongoose.connection.once("open",()=>{
 }).on("error",(err)=>{
     console.log("failed to connect to db",err);
 })
+
+app.use(secure);
+
 app.use(cookieSession({
     maxAge:3*60*60*1000,
     keys:[keys.session.key]

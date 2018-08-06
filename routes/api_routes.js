@@ -32,6 +32,7 @@ var res_meta = (meta,status,data)=>{
 
 router.get('/v1/stages/all',(req,res)=>{
     let max_count = req.query.limit || 20;
+    console.log(max_count)
     Stage.find().limit(max_count).then((data)=>{
         let result = meta;
         res_meta(result,200,data);
@@ -56,7 +57,7 @@ router.get('/v1/stages',(req,res)=>{
             console.log("failed to fetch data",err)
         })
     }else if (query.nearby){
-       Stage.find({nearby:query.mearby}).then(data=>{
+       Stage.find({nearby:query.nearby}).then(data=>{
            if(data.name){
             let result = meta;
             res_meta(result,200,data);

@@ -8,38 +8,38 @@
     <title>Home | Team </title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js'></script>
     <style>body{background: rgba(0,0,0,0.1)}</style>
-    </head>
+  </head>
   <body>
       <div class="nav-bar">
         <p id="team-header">Dashboard</p>
         <ul class='menu active'>
-                <li><a href='#'><p>Dashboard</p></a></li>
-                <li><a href='/team/datamine'><p>Data Mine</p></a></li> 
-                <li><a href='/auth/logout'><p>Logout</p></a></li>
+          <li><a href='#'><p>Dashboard</p></a></li>
+          <li><a href='/team/datamine'><p>Data Mine</p></a></li> 
+          <li><a href='/auth/logout'><p>Logout</p></a></li>
         </ul>
         <div class="thumb">
-            <p> <%=data.username%> </p>
-            <i class="fas fa-ellipsis-h"></i>
+          <p> <%=data.username%> </p>
+          <i class="fas fa-ellipsis-h"></i>
         </div>
      </div>
      <div class="main-container">
         <div class="latest-uploads">
-                <h3>Forum</h3>
-                <div class='forum-posts'>
-                  <ul id="posts">
-                  </ul>
-                </div>
-                <div class="post-form">
-                  <input type="text" id="forum-input" name='forum-msg' placeholder="write new post..."/>
-                  <input type="text" style = "display:none" id="user-name" value="<%=data.username%>"/>
-                  <button id='forum-post-btn'>Post</button>
-                </div>
+          <h3>Forum</h3>
+            <div class='forum-posts'>
+              <ul id="posts">
+              </ul>
+            </div>
+            <div class="post-form">
+              <input type="text" id="forum-input" name='forum-msg' placeholder="write new post..."/>
+              <input type="text" style = "display:none" id="user-name" value="<%=data.username%>"/>
+              <button id='forum-post-btn'>Post</button>
+            </div>
         </div>
         <div id="data-feed" class="all-stages">
-                <h3>Data</h3>
+         <h3>Data</h3>
         </div>
         <div id="team-feed" class="team-list">
-                <h3>The Team</h3>
+          <h3>The Team</h3>
         </div>
      </div>
      <script
