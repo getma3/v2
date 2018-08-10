@@ -86,7 +86,7 @@ label{
 
 
 #title{
-  width:100%;
+  width:90%;
   font-weight: 700;
   margin: 1em auto;
   color:#fff;
@@ -189,11 +189,16 @@ label{
   top:1em;
 }
 
-#data-result{
-  height: 5em;
+.data-result{
+  height: 4em;
   box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-  margin: 3px;
+  margin: 5px 0;
+  padding:2px;
+  overflow: hidden;
 }
+  .data-result p {
+    font-size: 0.8em;
+  }
 
 .all-stages{
   padding: 0px;
