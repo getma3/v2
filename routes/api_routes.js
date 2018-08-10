@@ -32,7 +32,6 @@ var res_meta = (meta,status,data)=>{
 
 router.get('/v1/stages/all',(req,res)=>{
    // let max_count = req.query.limit || 20;
-    console.log(max_count)
     Stage.find().then((data)=>{
         let result = meta;
         res_meta(result,200,data);
