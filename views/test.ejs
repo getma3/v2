@@ -1,73 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="/assets/style.css" type="text/css" rel="stylesheet"/>
-    	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#333333">
+    <title>Test | Team </title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js'></script>
+    <style>body{background: rgba(0,0,0,0.1)}</style>
   </head>
   <body>
-    <h2> API GET TEST </h2>
-    <p>ctrl + shift + i  to open up console</p>
-    <form id ="byName" action="http://localhost:8080/api/v1/stages/name/">
+      <div class="nav-bar">
+        <p id="team-header">API Test</p>
+      </div>
+      <br><br>
+      <h4>Stages near you</h4>
+      <div class="gps"></div>
+      <input id="stg_name" style="width: 300px; margin:2em " type="text" name="stg_name" placeholder="Type a stage name e.g wilson"/>
+      <button id="btn-nme">Search</button>
       <br>
-      <br>
-      <br>
-      <br>
-      <p>By Name</p>
-      <input id="name" type="text"/>
-      <input type="submit"></input>
-    </form>
-
-    <form id ="byCoords" action="http://localhost:8080/api/v1/stages/coords">
-      <br>
-      <br>
-      <br>
-      <br>
-      <p>By coords</p>
-      <input placeholder="latitude..." id="lat" type="text"/>
-      <input placeholder="longitude..." id="lon" type="text"/>
-      <input type="submit"></input>
-    </form>
-
-    <form id ="byNear" action="http://localhost:8080/api/v1/stages/nearby/">
-      <br>
-      <br>
-      <br>
-      <br>
-      <p>By NearBy place</p>
-      <input placeholder="nearby..." id="near" type="text"/>
-      <input type="submit"></input>
-    </form>
-
-    <script>
-    //LOADING FILES//
-      $(document).ready(function(){
-
-        $('#byName').submit(function(e){
-          e.preventDefault();
-          var text = $('#name').val();
-          var url = $(this).attr('action');
-          $.get(url+text).done(function(data){
-              console.log(data);
+      <input id="stg_near" style="width: 300px; margin:2em " type="text" name="stg_name" placeholder="Search by near by location e.g phenom estate "/>
+      <button id="btn-near">Search</button>
+      <h4>Results:</h4>
+      <div id='results'></div>
+      <script
+     src="https://code.jquery.com/jquery-3.3.1.min.js"
+     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+     crossorigin="anonymous"></script>
+     <script>
+     $('document').ready(function(){
+          $('#btn-nme').on('click',function(){
+            document.getElementById('results').innerHTML='';
+            let stg_name = $('#stg_name').val();
+           $.ajax({
+             method:"GET",
+             url:'http://getma3.herokuapp.com/api/v1/stages?name='+stg_name,
+             dataType:"json"
+           }).then(function(data){
+             //console.log(data);
+           $('#results').append("<p><strong>stage name: </strong>"+data.response.data.name+"<br><strong>stage description: </strong>"+data.response.data.desc+"</p>")
+           })
+          })
+          $('#btn-near').on('click',function(){
+            document.getElementById('results').innerHTML='';
+            let stg_near = $('#stg_near').val();
+           $.ajax({
+             method:"GET",
+             url:'http://getma3.herokuapp.com/api/v1/stages?nearby='+stg_near,
+             dataType:"json"
+           }).then(function(data){
+            data.response.data.forEach(element => {
+             // console.log(element);
+              $('#results').append("<p><strong>stage name: </strong>"+element.name+"<br><strong>stage description: </strong>"+element.desc+"<br></p>")
+               })
             });
-          });
-          $('#byNear').submit(function(e){
-            e.preventDefault();
-            var near = $('#near').val();
-            var url = $(this).attr('action');
-            $.get(url+near).done(function(data){
-                console.log(data);
-              });
-            });
-        $('#byCoords').submit(function(e){
-          e.preventDefault();
-          var lat = $('#lat').val();
-          var lon = $('#lon').val();
-          var url = $(this).attr('action');
-          $.get(url,{lat:lat,lon:lon}).done(function(data){
-              console.log(data);
-            });
-          });
-    });
-  </script>
-  </body>
+          })
+        })
+        function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+          
+          }
+        }
+        getLocation();
+        function showPosition(position) {
+          posLat =position.coords.latitude.toFixed(8);
+          posLon =position.coords.longitude.toFixed(8);
+          $.ajax({
+             method:"GET",
+             url:'http://getma3.herokuapp.com/api/v1/stages?lat='+posLat+'&lon='+posLon,
+             dataType:"json"
+           }).then(function(data){
+           data.response.data.forEach(element => {
+           
+              $('.gps').append("<p><strong>stage name: </strong>"+element.name+"<br><strong>stage description: </strong>"+element.desc+"<br></p>")
+               })
+            });  
+       }
+     </script>
+     </body>
 </html>
+
+ 

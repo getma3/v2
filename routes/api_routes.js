@@ -6,7 +6,7 @@ var res_meta = (meta,status,data)=>{
     if(!data){
         meta.status.code = 404
     }else{
-    meta.status.code = status
+        meta.status.code = status
     }
     if(status == 200){
         meta.status.message = "OK"
@@ -56,34 +56,29 @@ router.get('/v1/stages',(req,res)=>{
             console.log("failed to fetch data",err)
         })
     }else if (query.nearby){
-       Stage.find({nearby:query.nearby}).then(data=>{
-           if(data.name){
+       Stage.find( {nearby:query.nearby} ).then(data=>{
             let result = meta;
             res_meta(result,200,data);
             res.json(result);
-           }else{
-            let result = meta;
-            res_meta(result,404,null);
-            res.json(result);
-           }
        }).catch(err=>{
            console.log("failed to fetch data",err);
        })
     }else if(query.lat){
         let current_lat = Number(query.lat)
-        let current_lon = Number(query.lon)
-
-        let lat_upper = Number(current_lat.toFixed(4)) + 0.0001;
-        let lat_lower = Number(current_lat.toFixed(4)) - 0.0001;
-        let lon_upper = Number(current_lon.toFixed(4)) + 0.0001;
-        let lon_lower = Number(current_lon.toFixed(4)) - 0.0001;
+        let current_lon = Number(query.lon) 
+        let lat_upper = Number(current_lat.toFixed(4)) + 0.0025;
+        let lat_lower = Number(current_lat.toFixed(4)) - 0.0025;
+        let lon_upper = Number(current_lon.toFixed(4)) + 0.0025;
+        let lon_lower = Number(current_lon.toFixed(4)) - 0.0025;
+        //console.log(query.lat,query.lon)
         Stage.find({
             $and:[
-                {$and:[{location: {$gte:lon_lower}} , {location: {$lte:lon_upper} }]},
-                {$and:[{location: {$gte:lat_lower}} , {location: {$lte:lat_upper} }]}
-            ]
-         }).then(data=>{
-            if(data.name){
+                {"location.0":{$gte:lat_lower, $lte:lat_upper}},
+                {"location.1":{$gte:lon_lower, $lte:lon_upper}}
+                ]
+        }).then(data=>{
+           // console.log(data)
+            if(true){
                 let result = meta;
                 res_meta(result,200,data);
                  res.json(result);
@@ -95,8 +90,13 @@ router.get('/v1/stages',(req,res)=>{
         }).catch(err=>{
              console.log("failed to fetch data",err)
          })
+    }else{
+        res.json('null')
     }
 })
 
 
 module.exports = router
+
+
+

@@ -16,6 +16,10 @@ router.get('/',(req,res)=>{
     res.render('team_home')
 })
 
+router.get('/test',authCheck,(req,res)=>{
+	res.render('test');
+})
+
 router.get('/datamine',authCheck,(req,res)=>{
     Stage.find().count().then((val)=>{
         res.render("datamine",{data:val})
@@ -33,38 +37,30 @@ router.get('/teammembers',authCheck,(req,res)=>{
 })
 
 router.post('/datamine',authCheck,urlencodedparser,(req,res)=>{
-    var data = req.body
+    let data = req.body
 	if(!data.name || !data.desc || !data.routes || !data.latitude){
 		res.render('fail');
 	}else{
-		var location=[];
-		var options=[];
-		var sides;
-		var routes = data.routes.split(',');
-		var nearby = data.nearby.split(',');
+		let location=[];
+		let options=[];
+		let routes = data.routes.split(',');
+		let nearby = data.nearby.split(',');
 		if(data.van){
 			options.push('van');
 		}
 		if(data.bus){
 			options.push('bus');
 		}
-		if(data.single){
-			sides= 'single'
-		}
-		if(data.both){
-			sides = 'both'
-		}
 		location.push(Number(data.latitude))
         location.push(Number(data.longitude))
         
-        var result = new Stage({
+         new Stage({
             name:data.name,
             location:location,
-            sides:data.sides,
-            routes:data.routes,
+            routes:routes,
             options:options,
             desc:data.desc,
-            nearby:data.nearby,
+            nearby:nearby,
           }).save().then(()=>{
               console.log(data.name," added to db.")
           }).catch(err=>{
