@@ -31,7 +31,7 @@
      $('document').ready(function(){
           $('#btn-nme').on('click',function(){
             document.getElementById('results').innerHTML='';
-            let stg_name = $('#stg_name').val();
+            let stg_name = $('#stg_name').val().toLower();
            $.ajax({
              method:"GET",
              url:'https://getma3.herokuapp.com/api/v1/stages?name='+stg_name,
@@ -43,7 +43,7 @@
           })
           $('#btn-near').on('click',function(){
             document.getElementById('results').innerHTML='';
-            let stg_near = $('#stg_near').val();
+            let stg_near = $('#stg_near').val().toLower();;
            $.ajax({
              method:"GET",
              url:'https://getma3.herokuapp.com/api/v1/stages?nearby='+stg_near,
