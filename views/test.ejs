@@ -34,7 +34,7 @@
             let stg_name = $('#stg_name').val();
            $.ajax({
              method:"GET",
-             url:'http://getma3.herokuapp.com/api/v1/stages?name='+stg_name,
+             url:'https://getma3.herokuapp.com/api/v1/stages?name='+stg_name,
              dataType:"json"
            }).then(function(data){
              //console.log(data);
@@ -46,7 +46,7 @@
             let stg_near = $('#stg_near').val();
            $.ajax({
              method:"GET",
-             url:'http://getma3.herokuapp.com/api/v1/stages?nearby='+stg_near,
+             url:'https://getma3.herokuapp.com/api/v1/stages?nearby='+stg_near,
              dataType:"json"
            }).then(function(data){
             data.response.data.forEach(element => {
@@ -69,7 +69,7 @@
           posLon =position.coords.longitude.toFixed(8);
           $.ajax({
              method:"GET",
-             url:'http://getma3.herokuapp.com/api/v1/stages?lat='+posLat+'&lon='+posLon,
+             url:'https://getma3.herokuapp.com/api/v1/stages?lat='+posLat+'&lon='+posLon,
              dataType:"json"
            }).then(function(data){
            data.response.data.forEach(element => {
